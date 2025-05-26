@@ -16,5 +16,12 @@
     "url": "https://github.com/elleash/Elly-s-Booth/issues"
   },
   "homepage": "https://github.com/elleash/Elly-s-Booth#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.15.0",
+    "multer": "^2.0.0"
+  }
 }
