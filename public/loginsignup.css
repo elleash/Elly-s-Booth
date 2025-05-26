@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Righteous&display=swap');
+
+body{
+    background-color: #E0612F;
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+.heading, .btn{
+  font-family: "Holtwood One SC", serif;
+}
+
+label, p{
+  font-family: "Righteous", sans-serif;
+}
+
+.card-outer{
+    margin-top: 5%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.card-body{
+    margin-bottom: 30%;
+    
+}
+
+.inner-card{
+    background-color: #D2D2D2;
+    padding-top: 10%;
+    padding-bottom: 2%;
+}
+
+.btn {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn:hover {
+  background-color: #fff;
+}
+
+.btn:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .btn {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}

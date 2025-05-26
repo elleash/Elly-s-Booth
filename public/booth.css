@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Righteous&display=swap');
+
+body{
+  background-image: url(photobg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading{
+  font-family: "Holtwood One SC", serif;
+}
+.heading-2, .btn-74{
+  font-family: "Righteous", sans-serif;
+}
+#capturedFrames {
+    display: flex; /* Use flexbox for photostrip layout */
+    justify-content: center; /* Center the images */
+    flex-wrap: wrap; /* Prevent wrapping */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    margin-top: 1em;
+}
+  
+#capturedFrames img {
+  border: 6px solid white;
+  background-color: #fff;
+  padding: 5px;
+  padding-bottom: 4em;
+  margin-top: 2em;
+  margin-left: 1em;
+  max-width: 20%;
+  max-height: 30%;
+}
+
+#generatedStripContainer {
+  margin-top: 2em;
+}
+#generatedStrip {
+  border: 10px solid #ffff;
+  max-width: 40%;
+  margin-top: 0.5em;
+}
+
+video{
+  border: 4mm ridge rgba(211, 220, 50, 0.6);
+}
+
+.button-column{
+   text-wrap: nowrap;
+}
+
+.btn-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-74:hover {
+  background-color: #fff;
+}
+
+.btn-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .btn-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
