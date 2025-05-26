@@ -14,19 +14,21 @@ mongoose.connect('mongodb+srv://ellygrace711:4pn5oZJbNHCLAUPl@ellysbooth.qkrmyo2
 const app = express();
 const port = 3000;
 
+// using express-session for storing current users
 app.use(session({
     secret: 'photobooth',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
 }));
-
+// middleware and joining files
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.post('/signup', async (req, res) => { // Allow up to 3 files
-    console.log('Request Body:', req.body); // Debugging line
+// signup route
+app.post('/signup', async (req, res) => {
+    // console.log('Request Body:', req.body); debug
     const {email, password } = req.body;
 
     // check if email is in database
@@ -36,9 +38,9 @@ app.post('/signup', async (req, res) => { // Allow up to 3 files
     }
 
     try {
+        // store user in db and store in their id and email in session
         const newUser  = new User({ email, password});
         await newUser.save();
-        // Store user ID and email in session
         req.session.userId = newUser._id
         req.session.email = newUser.email
 
@@ -48,15 +50,17 @@ app.post('/signup', async (req, res) => { // Allow up to 3 files
         res.status(400).send('Error registering user: ' + error.message);
     }
 });
-
+// login route
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        // find user in db
         const user = await User.findOne({ email, password });
         if (user) {
 
-            req.session.userId = user._id; // Set session on login
+            // set session
+            req.session.userId = user._id;
             req.session.email = user.email;
 
             res.json({ message: 'Login successful' });
@@ -69,39 +73,39 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// configure multer for storing images
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, 'uploads/'); // store image in uploads file
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Append extension
+        cb(null, Date.now() + path.extname(file.originalname));
     }
 });
 
 const upload = multer({ storage: storage });
 
+// route to save images to the db
 app.post('/upload', upload.array('photos'), async (req, res) => {
 
     try {
-
-        // Get the user ID from the session
+        // get the user from the session
         const userId = req.session.userId;
-        // Check if userId exists
+        // check if they exist
         if (!userId) {
             return res.status(401).json({ error: 'User  not authenticated' });
         }
-        // Find the user by ID and update their images
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ error: 'User  not found' });
         }
 
-        // Save file paths to DB
+        // save the image paths to db
         const imagePaths = req.files.map(file => file.path); // Get paths of uploaded files
         user.images = [...(user.images || []), ...imagePaths]; // Append new images to existing ones
         await user.save();
 
-        // Send back URLs to images to display photostrip
+        // display the photostrip
         res.json({
             message: 'Photostrip saved successfully',
             images: imagePaths,
@@ -114,6 +118,6 @@ app.post('/upload', upload.array('photos'), async (req, res) => {
     }
 });
 
-  app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });

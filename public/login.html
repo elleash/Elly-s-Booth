@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="loginsignup.css">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico"
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <title>Elly's PhotoBooth</title>
 </head>
@@ -15,7 +16,6 @@
                 <div class="card card-outer rounded-0">
                     <div class="card-body">
                         <div class="card inner-card rounded-0">
-                            <!-- Content -->
                             <h2 class="text-center heading">LOGIN</h2>
                             <form id="loginForm">
                                 <div class="mx-auto mb-3 mt-5 col-8">
@@ -42,12 +42,14 @@
     </div>
 
 <script>
+    // event for when clicking the the login button
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        // get the user values
         const email = document.getElementById('emailid').value;
         const password = document.getElementById('passwordid').value;
-        
+        // call login route
         const response = await fetch('/login', {
             method: 'POST',
             headers: {
@@ -59,7 +61,7 @@
         const data = await response.json();
         if (response.ok) {
             alert('Login successful!');
-            window.location.href = "photobooth.html"
+            window.location.href = "photobooth.html" // redirect page to the main page
         } else {
             document.getElementById('errorMessage').textContent = data.error;
         }
