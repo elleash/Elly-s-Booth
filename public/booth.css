@@ -12,13 +12,6 @@ body{
 .btn-74, p{
   font-family: "Righteous", sans-serif;
 }
-#capturedFrames {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow-x: auto;
-    margin-top: 1em;
-}
   
 #capturedFrames img {
   border: 6px solid white;
@@ -27,8 +20,8 @@ body{
   padding-bottom: 4em;
   margin-top: 2em;
   margin-left: 1em;
-  max-width: 20%;
-  max-height: 30%;
+  width: 30%;
+  height: 25%;
 }
 
 #generatedStripContainer {
@@ -80,5 +73,19 @@ video{
   .btn-74 {
     min-width: 120px;
     padding: 0 25px;
+  }
+}
+@media screen and (max-width: 990px){
+  #capturedFrames img {
+    padding-bottom: 2em;
+    width: 50%;
+    height: 45%;
+  }
+}
+@media screen and (max-width: 767px){
+  #capturedFrames img {
+    padding-bottom: 2em;
+    width: 50%;
+    height: 45%;
   }
 }
