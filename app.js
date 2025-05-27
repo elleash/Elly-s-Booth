@@ -101,8 +101,8 @@ app.post('/upload', upload.array('photos'), async (req, res) => {
         }
 
         // save the image paths to db
-        const imagePaths = req.files.map(file => file.path); // Get paths of uploaded files
-        user.images = [...(user.images || []), ...imagePaths]; // Append new images to existing ones
+        const imagePaths = req.files.map(file => file.path); // get paths of uploaded files
+        user.images = [...(user.images || []), ...imagePaths]; // append new images to existing ones
         await user.save();
 
         // display the photostrip
