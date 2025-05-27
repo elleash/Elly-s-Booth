@@ -103,7 +103,7 @@ function generatePhotostrip() {
   let maxWidth = 0;
   let totalHeight = 0;
   
-  // calculate width and height pf each image
+  // calculate width and height of each image
   limitedImages.forEach(img => {
     const imgWidth = img.naturalWidth;
     const imgHeight = img.naturalHeight;
