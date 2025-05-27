@@ -6,17 +6,17 @@ body{
   background-size: cover;
 }
 
-.heading{
+.heading, .heading-2{
   font-family: "Holtwood One SC", serif;
 }
-.heading-2, .btn-74{
+.btn-74, p{
   font-family: "Righteous", sans-serif;
 }
 #capturedFrames {
-    display: flex; /* Use flexbox for photostrip layout */
-    justify-content: center; /* Center the images */
-    flex-wrap: wrap; /* Prevent wrapping */
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: auto;
     margin-top: 1em;
 }
   
@@ -34,6 +34,7 @@ body{
 #generatedStripContainer {
   margin-top: 2em;
 }
+
 #generatedStrip {
   border: 10px solid #ffff;
   max-width: 40%;

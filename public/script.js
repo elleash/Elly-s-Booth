@@ -193,7 +193,7 @@ downloadBtn.addEventListener('click', downloadPhotostrip);
 
 captureBtn.addEventListener('click', () => {
   photoCount = 0; // reset photo count when starting the timer again
-  startTimer(5); // set timer number
+  startTimer(3); // set timer number
 });
 
 clearBtn.addEventListener('click', clearCanvas);
