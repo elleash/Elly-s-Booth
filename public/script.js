@@ -57,11 +57,10 @@ function captureFrame() {
   img.src = dataUrl;
   // append the captured images to the captured frames container
   capturedFrames.appendChild(img);
-  photoCount++; // increment photo count
+  photoCount++; // increment photo count  
 
   // disable button if the captured image is less than two
   generateStripBtn.disabled = capturedFrames.children.length < 2;
-  generateStripBtn.style.display = 'none';
 }
 
 // set timer variables
