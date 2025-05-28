@@ -123,10 +123,10 @@ function generatePhotostrip() {
   const ctx = canvas.getContext('2d');
 
   // draw image vertically
-  let yOffset = 0;
+  let vertical = 0;
   limitedImages.forEach(img => {
-    ctx.drawImage(img, 0, yOffset, img.naturalWidth, img.naturalHeight);
-    yOffset += img.naturalHeight;
+    ctx.drawImage(img, 0, vertical, img.naturalWidth, img.naturalHeight);
+    vertical += img.naturalHeight;
 
   });
 
