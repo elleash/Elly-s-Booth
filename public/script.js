@@ -39,6 +39,7 @@ function clearCanvas(){
   generatedStripContainer.style.display = 'none';
 }
 
+let photoCount = 0;
 // function to take photos and save as a blob
 function captureFrame() {
 
@@ -66,7 +67,6 @@ function captureFrame() {
 // set timer variables
 let timer = null;
 let countdown = 0;
-let photoCount = 0;
 
 // function for the timer
 function startTimer(seconds) {
