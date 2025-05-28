@@ -61,7 +61,7 @@ function captureFrame() {
 
   // disable button if the captured image is less than two
   generateStripBtn.disabled = capturedFrames.children.length < 2;
-  generatedStripContainer.style.display = 'none';
+  generateStripBtn.style.display = 'none';
 }
 
 // set timer variables
