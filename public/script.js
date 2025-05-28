@@ -5,6 +5,7 @@ const capturedFrames = document.getElementById('capturedFrames');
 const statusText = document.getElementById('status');
 const clearBtn = document.getElementById('clearBtn');
 const downloadBtn = document.getElementById('downloadBtn');
+const displayBtn = document.getElementById('displayBtn');
 
 const generateStripBtn = document.getElementById('generateStripBtn');
 const generatedStripContainer = document.getElementById('generatedStripContainer');
@@ -137,11 +138,11 @@ function generatePhotostrip() {
   generatedStripContainer.style.display = 'block'; // display the strip 
 }
 
-// convert the images to blob so that images can be sent to backend
 async function uploadImages() {
     const images = [...capturedFrames.querySelectorAll('img')];
     const formData = new FormData();
 
+    // convert the images to blob so that images can be sent to backend
     for (let img of images) {
         const blob = await fetch(img.src).then(res => res.blob());
         formData.append('photos', blob, `photo${photoCount++}.jpg`);
@@ -183,6 +184,32 @@ function downloadPhotostrip() {
     link.click();
     document.body.removeChild(link); // Clean up
 }
+
+// function to display the saved images
+async function dispImg() {
+    try {
+      // call images route
+        const response = await fetch("/images");
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        const images = data.images || []; // store images in a variable
+        capturedFrames.innerHTML = ""; // clear images in the frame
+        // goes through each image in the array
+        images.forEach((image) => {
+            // creates a new div for each image and appends them to the original div
+            const imgDiv = document.createElement('div');
+            imgDiv.innerHTML = `<img src="${image}" alt="Image not found">`;
+            capturedFrames.appendChild(imgDiv);
+        });
+          
+    } catch (error) {
+        console.error("Error loading images:", error);
+    }
+};
+
+displayBtn.addEventListener('click', dispImg);
 
 generateStripBtn.addEventListener('click', () => {
     generatePhotostrip();
