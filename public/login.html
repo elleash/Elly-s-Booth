@@ -58,7 +58,6 @@
             body: JSON.stringify({ email, password })
         });
         
-        const data = await response.json();
         if (response.ok) {
             alert('Login successful!');
             window.location.href = "photobooth.html" // redirect page to the main page

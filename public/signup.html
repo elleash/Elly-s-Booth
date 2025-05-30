@@ -46,34 +46,27 @@
         // add event to sign up user
         document.getElementById("signinForm").addEventListener("submit", async (e) => {
           e.preventDefault();
+
           // get user value
           const email = document.getElementById("emailid").value;
           const password = document.getElementById("passwordid").value;
           // call signup route
-          try {
-            const response = await fetch("/signup", {
+          const response = await fetch("/signup", {
               method: "POST",
-              credentials: "same-origin",
               headers: {
                 "Content-Type": "application/json",
               },
-
               body: JSON.stringify({ email, password }),
             });
-
+            
             if (response.ok) {
-              const message = await response.text();
-              alert(message);
+              alert('Register Successful!');
               window.location.href = "photobooth.html"; // redirect to main
             } else {
               const errorMessage = await response.text();
               document.getElementById("errorMessage").innerText =
                 "Error: " + errorMessage;
             }
-          } catch (error) {
-            document.getElementById("errorMessage").innerText =
-              "Error: " + error.message;
-          }
         });
     </script>
   </body>

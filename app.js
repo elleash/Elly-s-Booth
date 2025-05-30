@@ -28,7 +28,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // signup route
 app.post('/signup', async (req, res) => {
-    // console.log('Request Body:', req.body); debug
     const {email, password } = req.body;
 
     // check if email is in database
